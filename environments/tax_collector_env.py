@@ -6,7 +6,7 @@ import random
 class Tax_Collector_Env(gym.Env):
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 60,}
 
-    def __init__(self, render_mode=None, screen_width=1000, screen_height=1000, player_width=50, player_height=50, money_width=20, money_height=10, time_length=1000):
+    def __init__(self, render_mode=None, screen_width=500, screen_height=500, player_width=50, player_height=50, money_width=20, money_height=10, time_length=1000):
         super(Tax_Collector_Env, self).__init__()
         if render_mode not in self.metadata['render_modes']:
             raise ValueError(f"Invalid render mode '{render_mode}'")

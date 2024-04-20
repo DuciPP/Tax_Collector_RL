@@ -4,15 +4,13 @@ from stable_baselines3.common.vec_env import SubprocVecEnv, VecNormalize
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
-from env_render_wrapper import SelectiveRenderWrapper
 import time
-import tax_collector_env
+import environments.tax_collector_env as tax_collector_env
 
 if __name__ == "__main__":
     
     env_id = "Tax_Collector_Env"
     num_cpu = 4
-    
     
     # Create vectorized environment
     vec_env = Monitor(make_vec_env(env_id, n_envs=num_cpu, vec_env_cls=SubprocVecEnv))
@@ -24,12 +22,12 @@ if __name__ == "__main__":
     model = PPO("MlpPolicy", norm_vec_env, verbose=0, tensorboard_log="./logs/tax_multiVsingle")
     
     start_time = time.time()
-    model.learn(total_timesteps=200000, tb_log_name="PPO_multi", progress_bar=True)
+    model.learn(total_timesteps=2000, tb_log_name="PPO_multi", progress_bar=True)
     elapsed_time = time.time() - start_time
     
     print(f"Training time: {elapsed_time} seconds")
     
-    norm_vec_env.reset()
+    norm_vec_env.close()
     
     env = Monitor(gym.make(env_id, render_mode="human"))
     
