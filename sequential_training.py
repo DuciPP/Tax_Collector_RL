@@ -3,7 +3,7 @@ import gymnasium as gym
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
-import environments.tax_collector_env as tax_collector_env
+import environments.tax_collector_env
 from environments.env_render_wrapper import SelectiveRenderWrapper
 import time
 

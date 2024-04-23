@@ -75,4 +75,4 @@ class Tax_Collector_Env(gym.Env):
     def close(self):
         pygame.quit()
         
-gym.register(id="Tax_Collector_Env", entry_point='tax_collector_env:Tax_Collector_Env')
+gym.register(id="Tax_Collector_Env", entry_point='environments.tax_collector_env:Tax_Collector_Env')
